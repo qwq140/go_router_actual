@@ -9,6 +9,7 @@ class DefaultLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = GoRouter.of(context);
+    print(router.location);
     return Scaffold(
       appBar: AppBar(
         title: Text(router.location),
