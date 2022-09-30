@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
                 routes: [
                   GoRoute(
                       path: 'second',
+                      name: SecondScreen.routeName,
                       builder: (context, state) => const SecondScreen(),
                       routes: [
                         GoRoute(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_actual/layout/defualt_layout.dart';
+import 'package:go_router_actual/screen/second_screen.dart';
 import 'package:go_router_actual/screen/third_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,6 +18,12 @@ class HomeScreen extends StatelessWidget {
               context.go('/first');
             },
             child: Text('go first screen'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.goNamed(SecondScreen.routeName);
+            },
+            child: Text('go second screen'),
           ),
           ElevatedButton(
             onPressed: () {
