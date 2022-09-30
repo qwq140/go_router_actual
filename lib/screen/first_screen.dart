@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:go_router_actual/layout/defualt_layout.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -8,7 +10,15 @@ class FirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultLayout(
       body: Column(
-        children: [],
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              context.pop();
+            },
+            child: Text('POP'),
+          ),
+        ],
       ),
     );
   }

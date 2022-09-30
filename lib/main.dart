@@ -17,21 +17,21 @@ class MyApp extends StatelessWidget {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => const HomeScreen(),
+            builder: (_, state) => const HomeScreen(),
             routes: [
               GoRoute(
                 path: 'first',
-                builder: (context, state) => const FirstScreen(),
+                builder: (_, state) => const FirstScreen(),
                 routes: [
                   GoRoute(
                       path: 'second',
                       name: SecondScreen.routeName,
-                      builder: (context, state) => const SecondScreen(),
+                      builder: (_, state) => const SecondScreen(),
                       routes: [
                         GoRoute(
                             path: 'third',
                             name: ThirdScreen.routeName,
-                            builder: (context, state) => const ThirdScreen(),
+                            builder: (_, state) => const ThirdScreen(),
                         )
                       ]
                   )
