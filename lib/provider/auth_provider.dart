@@ -13,7 +13,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   final authStateProvider = AuthNotifier(ref: ref);
 
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: '/login',
     errorBuilder: (context, state) =>
         ErrorScreen(error: state.error.toString()),
     // redirect
