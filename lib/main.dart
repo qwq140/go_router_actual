@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_actual/provider/auth_provider.dart';
 import 'package:go_router_actual/screen/error_screen.dart';
 import 'package:go_router_actual/screen/first_screen.dart';
 import 'package:go_router_actual/screen/home_screen.dart';
@@ -7,47 +9,17 @@ import 'package:go_router_actual/screen/second_screen.dart';
 import 'package:go_router_actual/screen/third_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  GoRouter get _router => GoRouter(
-        initialLocation: '/',
-        errorBuilder: (context, state) => ErrorScreen(error: state.error.toString()),
-        routes: [
-          GoRoute(
-            path: '/',
-            builder: (_, state) => const HomeScreen(),
-            routes: [
-              GoRoute(
-                path: 'first',
-                builder: (_, state) => const FirstScreen(),
-                routes: [
-                  GoRoute(
-                      path: 'second',
-                      name: SecondScreen.routeName,
-                      builder: (_, state) => const SecondScreen(),
-                      routes: [
-                        GoRoute(
-                            path: 'third',
-                            name: ThirdScreen.routeName,
-                            builder: (_, state) => const ThirdScreen(),
-                        )
-                      ]
-                  )
-                ]
-              )
-            ]
-          ),
-        ],
-      );
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
     return MaterialApp.router(
-      routerConfig: _router,
+      routerConfig: router,
       // // route 정보를 전달
       // routeInformationProvider: _router.routeInformationProvider,
       // // URI String을 상태 및 Go Router에서 사용할 수 있는 형태로 변환해주는 함수
